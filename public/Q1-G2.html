@@ -6,20 +6,31 @@
     <title>First Quarter - Second Graded Exercise</title>
 </head>
 <body>
-    <h1> Reolizo, Jairo Stian - 9-Sr - Aug 11, 2025</h1>
-<h2> Second Graded Exercise - First Quarter</h2>
-
-<p>My friends are: </p>
-
-<input id="in1" placeholder='Friend 1'> <br>
-<input id="in2" placeholder='Friend 2'> <br>
-
-<button onclick="printFriends()">Show Friends</button>
-
-<div id="out1"></div>
+    <h1> Q1 3rd Graded Exercise submitted by Reolizo, Jairo Stian, 9-Strontium</h1>
 
 
-<script src="secondgraded.js"></script>
+<input id="mealprice" type="number" placeholder="Meal Price"> <br>
+<input id="tip" type="number" placeholder="Tip"> <br>
+<input id="service_charge" type="number" placeholder="Service Charge (%)"> <br>
+
+
+<button onclick="calculateTotal()">Calculate Total</button>
+
+<div id="totalOutput"></div>
+
+<script>
+    function calculateTotal(){
+        mealPrice = Number(mealprice.value);
+        myTip = Number(tip.value);
+        serviceCharge = Number(service_charge.value);
+
+        total = (mealPrice + myTip) + (mealPrice * serviceCharge / 100);
+
+        totalOutput.innerHTML = "Total Amount: Php" + total.toPrecision(6);
+        alert("Total Amount: Php" + total.toFixed(2));
+        console.log("Total Amount: Php" + total.toExponential());
+    }
+</script>
 
 </body>
 </html>
