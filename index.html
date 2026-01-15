@@ -3,27 +3,35 @@
 <head>
   <title>Reolizo's Works</title>
         <style>
+            html, body {
+            height: 100%;
+            margin: 0;
+            }
+
             body {
             font-family: cursive;
-            margin: 0;
             padding: 20px;
-            color: #e6f0e6; 
+            color: #e6f0e6;
             text-align: center;
-            background-color: #0d1b2a; 
+            background-color: #0d1b2a;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
             }
 
             header {
-            background-color: #1b263b; 
-            color: #b3b7ff; 
+            background-color: #1b263b;
+            color: #b3b7ff;
             padding: 20px;
             border-bottom: 3px solid #ffffff;
             }
 
             header {
-            background-color: #b3b7ff; 
-            color: #cfe0c3; 
+            background-color: #b3b7ff;
+            color: #cfe0c3;
             padding: 20px;
             border-bottom: 3px solid #b3b7ff;
+            font-size: 20px;
             }
 
             nav {
@@ -52,9 +60,22 @@
             section {
             display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin: 40px auto;
+            flex-wrap: wrap;
+            }
+
+            .content-left {
+            display: flex;
+            align-items: center;
+            }
+
+            .content-right {
+            display: flex;
+            flex-direction: column;
             align-items: flex-start;
-            gap: 40px;
-            margin: 40px;
+            text-align: left;
             }
 
 
@@ -109,9 +130,15 @@
             color: #6262ff;
             }
 
+            ul li {
+            font-size: 22px;
+            margin: 15px 0;
+            }
+
 
             h1 {
             margin-top: 20px;
+            font-size: 32px;
             }
 
             h2 {
@@ -119,6 +146,7 @@
             width: 80%;
             margin: 20px auto;
             color: #b3b7ff;
+            font-size: 36px;
             }
 
             h3 {
@@ -126,6 +154,14 @@
             width: 80%;
             margin: 20px auto;
             color: #b3b7ff;
+            font-size: 32px;
+            }
+
+            hr {
+            border: none;
+            border-top: 3px solid #b3b7ff;
+            width: 100%;
+            margin: 20px 0;
             }
 
 
@@ -134,8 +170,9 @@
             color: #e6f0e6;
             padding: 10px;
             border-top: 3px solid #ffffff;
-            text-align: left;
+            text-align: center;
             font-size: 14px;
+            margin-top: auto;
             }
 
             footer a {
@@ -149,26 +186,78 @@
             text-align: center;
             margin-top: 15px;
             }
+
+            .title-box {
+            background-color: #b3b7ff;
+            color: #0d1b2a;
+            padding: 30px 40px;
+            border-radius: 15px;
+            margin: 20px auto;
+            width: fit-content;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            }
+
+            .title-box:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            }
+
+            .title-box h1 {
+            font-size: 50px;
+            margin: 0;
+            }
+
+            .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin: 40px auto;
+            flex-wrap: wrap;
+            }
+
+            .content-left {
+            display: flex;
+            align-items: center;
+            }
+
+            .content-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            }
             </style>
             
      <link rel="icon"  href="public/favicon.png">
 </head>
 
 <body>
-   <h1 style="font-size: 50px;">JSOREOLIZO 2ND QUARTER INDEX</h1>
+   <div class="title-box">
+      <h1>JSOREOLIZO THIRD QUARTER INDEX</h1>
+   </div>
    <h1>REOLIZO, Jairo Stian 9-Sr</h1>
-  <h1>---------------------------------------------</p>
+   <hr>
 
-    <aside>
-         <img src="public/istockphoto-1317495176-612x612.jpg" width="400" height="400">
-    </aside>
    <h2>Here are my works</h2>
-   <h3>Dreadful Monday and Tuesday Schedule</h3>
-   <ul>
-      <li><a href="public/2Q2GStrontiumReolizo.html">Monday Link</a></li>
-      <li><a href="public/TuesdaySched.html">Tuesday Link</a></li>
-      <li><a href="public/WednesdaySched.html">Wednesday Link</a></li>
-    </ul>
+   
+   <div class="content-container">
+      <div class="content-left">
+         <aside>
+            <img src="public/istockphoto-1317495176-612x612.jpg" width="400" height="400" alt="Profile Image">
+         </aside>
+      </div>
+      <div class="content-right">
+         <h3 style="text-align: left; width: 100%; margin: 0 0 20px 0;">Dreadful Monday and Tuesday Schedule</h3>
+         <ul style="text-align: left;">
+            <li><a href="public/2Q2GStrontiumReolizo.html">Monday Link</a></li>
+            <li><a href="public/TuesdaySched.html">Tuesday Link</a></li>
+            <li><a href="public/WednesdaySched.html">Wednesday Link</a></li>
+         </ul>
+      </div>
+   </div>
 
     <footer>
 
