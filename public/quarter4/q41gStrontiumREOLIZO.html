@@ -4,65 +4,191 @@
 <title>Add a Movie</title>
 
 <style>
+
 body{
     font-family: Arial;
-    background:#f2f2f2;
+    background:#0f0f0f;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;   /* start from top instead of middle */
+
+    background-image: url('https://wallpaperaccess.com/full/6604090.gif');
+    background-size: cover;
+
+    min-height:100vh;
+    padding:40px 0; /* space at top/bottom */
 }
 
 .container{
-    width:350px;
-    margin:40px auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    width:420px;
+    background:#1a1a1a;
+    padding:35px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,0.8);
 }
 
 h2{
-    text-align:center;
+    color:#ff3b3b;
+    margin-bottom:10px;
 }
 
 label{
     display:block;
-    margin-top:10px;
+    margin-top:18px;
+    color:white;
+    text-align:center;
 }
+
+/* TEXT BOXES */
 
 input, select{
-    width:100%;
-    padding:8px;
-    margin-top:5px;
+    width:85%;
+    padding:10px;
+    margin-top:8px;
+    border:none;
+    border-radius:8px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+
+    background:#2b2b2b;
+    color:white;
+
+    /* POP OUT EFFECT */
+    box-shadow:0 4px 10px rgba(0,0,0,0.6);
+    transition:0.2s;
 }
 
+/* when clicked */
+input:focus, select:focus{
+    outline:none;
+    transform:scale(1.05);
+    box-shadow:0 6px 18px rgba(255,0,0,0.6);
+}
+
+/* BUTTON */
+
 button{
-    width:100%;
-    padding:10px;
-    margin-top:15px;
-    background:#1976d2;
+    width:85%;
+    padding:12px;
+    margin-top:22px;
+    background:#ff2d2d;
     color:white;
     border:none;
-    border-radius:5px;
+    border-radius:8px;
+    font-weight:bold;
     cursor:pointer;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+
+    box-shadow:0 6px 14px rgba(0,0,0,0.6);
+    transition:0.2s;
 }
 
 button:hover{
-    background:#125aa0;
+    background:#cc0000;
+    transform:scale(1.05);
 }
 
 .star{
-    font-size:22px;
+    font-size:30px;
     cursor:pointer;
-    color:lightgray;
+    color:gray;
+    transition:0.2s;
+    margin:0 4px;
+}
+
+.star:hover{
+    transform:scale(1.3);
+}
+
+.star:hover ~ .star{
+    transform:scale(1.3);
 }
 
 .star.active{
     color:gold;
 }
 
-.movie{
-    background:#f7f7f7;
-    padding:10px;
-    border-radius:5px;
+#stars{
     margin-top:10px;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content:center;
+}
+
+.movie{
+    background:#2a2a2a;
+    padding:14px;
+    border-radius:8px;
+    margin-top:12px;
+    color:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.6);
+    text-align:center;
+    position: relative;
+}
+
+.movie-title{
+    font-size:20px;
+    font-weight:bold;
+    color:#ff4c4c;
+    margin-bottom:10px;
+    text-align:center;
+    padding:0 40px;
+}
+
+.movie-genre{
+    font-size:16px;
+    opacity:0.8;
+}
+
+.movie-rating{
+    margin-top:4px;
+}
+
+.movie-item {
+    position: relative;
+}
+
+.movie-header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.delete-btn{
+    position:absolute;
+    top:4px;
+    right:4px;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:transparent;
+    border:none;
+    border-radius:8px;
+
+    font-size:18px;
+    color:#ff4c4c;
+    cursor:pointer;
+
+    margin:0;
+    padding:0;
+    box-shadow:none;
+
+    transition:0.2s;
+}
+
+.delete-btn:hover{
+    background:#3a3a3a;
+    color:white;
 }
 </style>
 
@@ -74,28 +200,36 @@ button:hover{
 
 <h2>Add a Movie</h2>
 
-<label>Title:</label>
+<label>Title</label>
 <input type="text" id="title">
 
-<label>Year:</label>
+<label>Year</label>
 <input type="number" id="year">
 
-<label>Genre:</label>
+<label>Genre</label>
 <select id="genre">
+<option value="">Select Genre</option>
 <option>Action</option>
+<option>Adventure</option>
+<option>Animation</option>
 <option>Comedy</option>
 <option>Drama</option>
 <option>Horror</option>
+<option>Fantasy</option>
+<option>Mystery</option>
+<option>Romance</option>
 <option>Sci-Fi</option>
+<option>Thriller</option>
 </select>
 
-<label>Rating:</label>
+<label>Rating</label>
+
 <div id="stars">
-<span class="star" data-value="1">★</span>
-<span class="star" data-value="2">★</span>
-<span class="star" data-value="3">★</span>
-<span class="star" data-value="4">★</span>
 <span class="star" data-value="5">★</span>
+<span class="star" data-value="4">★</span>
+<span class="star" data-value="3">★</span>
+<span class="star" data-value="2">★</span>
+<span class="star" data-value="1">★</span>
 </div>
 
 <button onclick="addMovie()">Add Movie</button>
@@ -116,12 +250,12 @@ stars.forEach(star=>{
         rating = this.getAttribute("data-value");
 
         stars.forEach(s=>{
-            s.classList.remove("active");
+            if(s.getAttribute("data-value") <= rating){
+                s.classList.add("active");
+            }else{
+                s.classList.remove("active");
+            }
         });
-
-        for(let i=0;i<rating;i++){
-            stars[i].classList.add("active");
-        }
 
     });
 });
@@ -134,15 +268,15 @@ function addMovie(){
     const genre = document.getElementById("genre").value;
 
     if(title === "" || year === "" || rating === 0){
-        alert("Please fill everything.");
+        alert("Fill all fields");
         return;
     }
 
     const movie = {
-        title: title,
-        year: year,
-        genre: genre,
-        rating: rating
+        title:title,
+        year:year,
+        genre:genre,
+        rating:rating
     };
 
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
@@ -169,25 +303,46 @@ function displayMovies(){
 
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-    movies.forEach(m=>{
+    movies.forEach((m, index)=>{
 
-        let starDisplay = "";
+        let stars = "";
 
-        for(let i=0;i<m.rating;i++){
-            starDisplay += "⭐";
+        for(let i = 1; i <= 5; i++){
+            if(i <= m.rating){
+                stars += '<span class="star active">★</span>';
+            }else{
+                stars += '<span class="star">★</span>';
+            }
         }
 
         const div = document.createElement("div");
         div.className="movie";
 
         div.innerHTML =
-        m.title + " (" + m.year + ") - " +
-        m.genre + ", Rating: " + starDisplay;
+`
+        <div class="movie-header">
+            <div class="movie-title">${m.title} (${m.year})</div>
+            <button class="delete-btn" onclick="deleteMovie(${index})">✕</button>
+        </div>
+        <div class="movie-genre">${m.genre}</div>
+        <div class="movie-rating">${stars}</div>
+        `;
 
         movieList.appendChild(div);
 
     });
 
+}
+
+function deleteMovie(index){
+
+    let movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+    movies.splice(index, 1);
+
+    localStorage.setItem("movies", JSON.stringify(movies));
+
+    displayMovies();
 }
 
 displayMovies();
