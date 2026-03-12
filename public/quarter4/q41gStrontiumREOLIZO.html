@@ -190,6 +190,12 @@ button:hover{
     background:#3a3a3a;
     color:white;
 }
+
+.rating-info{
+    margin-top:6px;
+    font-size:14px;
+    opacity:0.8;
+}
 </style>
 
 </head>
@@ -276,12 +282,28 @@ function addMovie(){
         title:title,
         year:year,
         genre:genre,
-        rating:rating
+        rating:parseInt(rating),
+        ratingsCount:1
     };
 
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-    movies.push(movie);
+
+    let existingMovie = movies.find(m => m.title.toLowerCase() === title.toLowerCase());
+
+    if(existingMovie){
+
+        existingMovie.year = year;
+        existingMovie.genre = genre;
+
+        existingMovie.rating =
+        (existingMovie.rating * existingMovie.ratingsCount + movie.rating) /
+        (existingMovie.ratingsCount + 1);
+
+        existingMovie.ratingsCount += 1;
+    }else{
+        movies.push(movie);
+    }
 
     localStorage.setItem("movies", JSON.stringify(movies));
 
@@ -294,7 +316,6 @@ function addMovie(){
     stars.forEach(s=>s.classList.remove("active"));
 }
 
-
 function displayMovies(){
 
     const movieList = document.getElementById("movieList");
@@ -305,27 +326,41 @@ function displayMovies(){
 
     movies.forEach((m, index)=>{
 
-        let stars = "";
+        let starsHTML = "";
+
+        // round rating to nearest 0.5
+        let rounded = Math.round(m.rating * 2) / 2;
 
         for(let i = 1; i <= 5; i++){
-            if(i <= m.rating){
-                stars += '<span class="star active">★</span>';
-            }else{
-                stars += '<span class="star">★</span>';
-            }
-        }
 
+            if(i <= Math.floor(rounded)){
+                starsHTML += '<span class="star active">★</span>'; // full star
+            }
+
+            else if(i - 0.5 === rounded){
+                starsHTML += '<span class="star">⯪</span>'; // half star
+            }
+
+            else{
+                starsHTML += '<span class="star">☆</span>'; // empty star
+            }
+}
         const div = document.createElement("div");
         div.className="movie";
 
         div.innerHTML =
-`
+        `
         <div class="movie-header">
             <div class="movie-title">${m.title} (${m.year})</div>
             <button class="delete-btn" onclick="deleteMovie(${index})">✕</button>
         </div>
         <div class="movie-genre">${m.genre}</div>
-        <div class="movie-rating">${stars}</div>
+        <div class="movie-rating">
+        ${starsHTML}
+        <div class="rating-info">
+        ${m.rating.toFixed(2)} / 5 • ${m.ratingsCount} rating(s)
+        </div>
+        </div>
         `;
 
         movieList.appendChild(div);
@@ -335,6 +370,12 @@ function displayMovies(){
 }
 
 function deleteMovie(index){
+
+    const confirmDelete = confirm("Are you sure you want to delete?");
+
+    if(!confirmDelete){
+        return;
+    }
 
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
