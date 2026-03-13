@@ -10,13 +10,13 @@ body{
     background:#0f0f0f;
     display:flex;
     justify-content:center;
-    align-items:flex-start;   /* start from top instead of middle */
+    align-items:flex-start;
 
     background-image: url('https://wallpaperaccess.com/full/6604090.gif');
     background-size: cover;
 
     min-height:100vh;
-    padding:40px 0; /* space at top/bottom */
+    padding:40px 0;
 }
 
 .container{
@@ -40,8 +40,6 @@ label{
     text-align:center;
 }
 
-/* TEXT BOXES */
-
 input, select{
     width:85%;
     padding:10px;
@@ -55,19 +53,15 @@ input, select{
     background:#2b2b2b;
     color:white;
 
-    /* POP OUT EFFECT */
     box-shadow:0 4px 10px rgba(0,0,0,0.6);
     transition:0.2s;
 }
 
-/* when clicked */
 input:focus, select:focus{
     outline:none;
     transform:scale(1.05);
     box-shadow:0 6px 18px rgba(255,0,0,0.6);
 }
-
-/* BUTTON */
 
 button{
     width:85%;
