@@ -98,15 +98,29 @@
 
 - Challenge: 
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
+    Answer: To place the .notice box at the top-right corner of the .content box, the .content must be set to position: relative and the .notice to position: absolute with top: 0 and right: 0, so it is positioned relative to its parent.\
+
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
+    Answer: When .content is set to position: relative, the .notice stays positioned within the content box, but when .content is changed to position: fixed, both the content and notice remain fixed on the screen and do not move when scrolling.
+
     * What do you observe on about the effect of z-index on .notice and .content boxes?
+    Answer: The z-index determines which element appears on top, so the .notice appears above the .content because it has a higher z-index, and swapping their values will cause the content to cover the notice.
+
 
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
 
+    - static is the default where elements follow the normal layout, relative moves an element from its original position without removing its space, absolute removes the element from the layout and positions it based on a parent, and fixed locks the element to the screen regardless of scrolling.
+
     b. How does absolute positioning depend on its parent element?
+
+    - Absolute positioning depends on the nearest parent with a position other than static, and if none exists, it will position itself relative to the entire page.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
 
+    - position: sticky behaves like relative until a certain scroll point, then sticks within its container, while position: fixed stays permanently fixed on the screen regardless of scrolling.
+
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+
+    - I would use fixed positioning for a navigation bar so it stays visible, absolute positioning to place important things on images, relative positioning to adjust layout elements slightly, and sticky positioning for headers and taskbars so they remain visible while scrolling through event details.
