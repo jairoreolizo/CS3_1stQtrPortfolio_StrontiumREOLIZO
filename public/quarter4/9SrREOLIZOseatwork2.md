@@ -73,7 +73,7 @@
 
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
 
-- Answer: 
+- Answer: The content is placed exactly 66px from top and 200px from the left. Unlike fixed, scrolling won't make it stay in place.
 
 ### Step 4 : (Absolute)
 
@@ -93,6 +93,8 @@
 - Give .content a z-index: 1.
 
 - Guided Question: Why does the notice appear on top of the content? What happens if you swap the z‑index values?
+
+- Answer: The notice appears on top of the content because it has a higher z-index value, and if the values are swapped, the content will appear above the notice instead.
 
 - Challenge: 
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
