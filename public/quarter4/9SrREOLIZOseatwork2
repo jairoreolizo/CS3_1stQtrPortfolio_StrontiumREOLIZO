@@ -57,17 +57,23 @@
 
 - Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.
 
+- Answer: The sidebar box moved 20px down and 20px to the right. It added space to the left and top side.
+
 ### Step 2 (Fixed):
 
 - Add in css ```position: fixed; bottom: 0; width: 100%;``` to .footer.
 
 - Guided Question: What happens when you scroll the page? Why does the footer behave differently from position relative?
 
+- Answer: The box moved to the very bottom, and even after scrolling it stays in one fixed spot. It also covered the width of the whole screen. It has no space from the bottom too.
+
 ### Step 3 (Absolute):
 
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
 
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
+
+- Answer: 
 
 ### Step 4 : (Absolute)
 
